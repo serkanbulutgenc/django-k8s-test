@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  django:
+    container_name: django-k8s
+    build:
+      dockerfile: ../compose/local/django/Dockerfile
+      context: ./webapp
+    env_file:
+      - ./.envs/local/.django-env
+    volumes:
+      - ./webapp:/app
+    ports:
+      - "8088:8888"
+    
