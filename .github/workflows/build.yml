@@ -19,6 +19,7 @@ jobs:
           token: ${{secrets.DO_ACCESS_TOKEN}}
       - name: Build & Tag the App Image
         run: |
+          docker --version
           docker build -t registry.digitalocean.com/k8s-test-docr/k8s-django:latest \
           -t registry.digitalocean.com/k8s-test-docr/k8s-django:${GITHUB_SHA::7} -f webapp/Dockerfile webapp
       - name: Push the images to DOCR
