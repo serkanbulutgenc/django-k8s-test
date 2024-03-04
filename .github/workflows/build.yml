@@ -28,7 +28,7 @@ jobs:
         run: |
           doctl registry login --expiry-seconds 1200
           docker push registry.digitalocean.com/k8s-test-docr/k8s-django:latest
-          docker push registry.digitalocean.com/k8s-test-docr/k8s-django::${GITHUB_SHA::7}  
+          docker push registry.digitalocean.com/k8s-test-docr/k8s-django:${GITHUB_SHA::7}  
           
           
           
