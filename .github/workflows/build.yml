@@ -20,12 +20,12 @@ jobs:
       - name: Build & Tag the App Image
         run: |
           docker build -t registry.digitalocean.com/k8s-test-docr/k8s-django:latest \
-          -t registry.digitalocean.com/k8s-test-docr/k8s-django:${GITHUB_SHA::7} -f compose/local/django/Dockerfile webapp
+          -t registry.digitalocean.com/k8s-test-docr/k8s-django:${{github.sha::7}} -f compose/local/django/Dockerfile webapp
       - name: Push the images to DOCR
         run: |
           doctl registry login --expiry-seconds 1200
           docker push registry.digitalocean.com/k8s-test-docr/k8s-django:latest
-          docker push registry.digitalocean.com/k8s-test-docr/k8s-django::${GITHUB_SHA::7} 
+          docker push registry.digitalocean.com/k8s-test-docr/k8s-django::${{github.sha::7}} 
           
           
           
